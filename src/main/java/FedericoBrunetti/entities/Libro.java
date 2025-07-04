@@ -17,12 +17,12 @@ public class Libro extends Articolo {
     public Libro() {
     }
 
-    public Libro(String autore, Genere genere) {
+    public Libro(String isbn, String titolo, String annoPubblicazione,
+                 short numPagine, boolean isPrestabile, String autore, Genere genere) {
+        super(isbn, titolo, annoPubblicazione, numPagine, isPrestabile);
         this.autore = autore;
         this.genere = genere;
     }
-
-
 
 
 

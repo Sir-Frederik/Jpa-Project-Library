@@ -15,9 +15,10 @@ public class Rivista extends  Articolo {
 
     public Rivista() {
     }
-
-    public Rivista(Periodicita periodicita) {
-        this.periodicita = periodicita;
+    public Rivista(String isbn, String titolo, String annoPubblicazione,
+                 short numPagine, boolean isPrestabile,Periodicita periodicita) {
+        super(isbn, titolo, annoPubblicazione, numPagine, isPrestabile);
+       this.periodicita = periodicita;
     }
 
     public Periodicita getPeriodicita() {
