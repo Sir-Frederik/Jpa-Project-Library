@@ -1,13 +1,17 @@
 package FedericoBrunetti;
 
 import FedericoBrunetti.dao.ArticoloDAO;
+import FedericoBrunetti.entities.Articolo;
 import FedericoBrunetti.entities.Libro;
 import FedericoBrunetti.entities.Rivista;
 import FedericoBrunetti.enums.Genere;
 import FedericoBrunetti.enums.Periodicita;
+import FedericoBrunetti.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+
+import java.util.List;
 
 public class Application {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("biblioteca");
@@ -15,7 +19,7 @@ public class Application {
         EntityManager em = emf.createEntityManager();
         ArticoloDAO ad = new ArticoloDAO(em);
 
-        Libro libro1 = new Libro("978-88-123460", "Fondazione", "1951",
+        /*Libro libro1 = new Libro("970-88-123460", "Fondazione", "1951",
                 (short) 255, true, "Asimov", Genere.FANTASCIENZA);
 
         Libro libro2 = new Libro("978-88-123457", "Il Signore degli Anelli", "1954", (short) 1216, true, "J.R.R. Tolkien", Genere.FANTASY);
@@ -41,9 +45,32 @@ ad.save(rivista1);
 ad.save(rivista2);
 ad.save(rivista3);
 ad.save(rivista4);
-ad.save(rivista5);
+ad.save(rivista5);*/
 
-//        ad.findAll().forEach(System.out::println);
+        System.out.println("Cerco libro by isbn");
+try{
+    Libro libroFromDb = (Libro) ad.findByIsbn("978-88-123457");
+    System.out.println(libroFromDb);
+}catch (NotFoundException ex){
+    System.out.println(ex.getMessage());
+}
+        System.out.println("Cerco libro by autore");
+
+        List<Libro> libri = ad.findByAutore("Asimov");
+
+        if (libri.isEmpty()) {
+            System.out.println("Nessun libro trovato");
+        } else {
+            libri.forEach(System.out::println);
+        }
+
+/*try{
+    Libro libroFromDb = (Libro) ad.findByAutore("Asimov");
+    System.out.println(libroFromDb);
+}catch (NotFoundException ex){
+    System.out.println(ex.getMessage());
+}*/
+
 
 
         em.close();

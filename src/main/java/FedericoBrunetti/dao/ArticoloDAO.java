@@ -1,6 +1,7 @@
 package FedericoBrunetti.dao;
 
 import FedericoBrunetti.entities.Articolo;
+import FedericoBrunetti.entities.Libro;
 import FedericoBrunetti.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -32,6 +33,24 @@ public class ArticoloDAO {
 
     public List <Articolo> findAll(){
         TypedQuery<Articolo> query =entityManager.createQuery("SELECT A FROM Articolo a", Articolo.class);
+        return query.getResultList();
+    }
+
+    public List<Articolo> findByAnnoPubblicazione(String anno) {
+        TypedQuery<Articolo> query = entityManager.createQuery(
+                "SELECT a FROM Articolo a WHERE a.annoPubblicazione = :anno",
+                Articolo.class
+        );
+        query.setParameter("anno", anno);
+        return query.getResultList();
+    }
+
+    public List<Libro> findByAutore(String autore) {
+        TypedQuery<Libro> query = entityManager.createQuery(
+                "SELECT l FROM Libro l WHERE l.autore = :autore",
+                Libro.class
+        );
+        query.setParameter("autore", autore);
         return query.getResultList();
     }
 }
