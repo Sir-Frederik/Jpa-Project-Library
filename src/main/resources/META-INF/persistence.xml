@@ -10,6 +10,9 @@
         <class>FedericoBrunetti.entities.Libro</class>
         <class>FedericoBrunetti.entities.Articolo</class>
         <class>FedericoBrunetti.entities.Rivista</class>
+        <class>FedericoBrunetti.entities.Utente</class>
+        <class>FedericoBrunetti.entities.Prestito</class>
+
 
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Biblioteca"/>

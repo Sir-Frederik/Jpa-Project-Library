@@ -5,8 +5,10 @@ import FedericoBrunetti.enums.Periodicita;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "rivista")
 public class Rivista extends  Articolo {
     @Enumerated(EnumType.STRING)
     private Periodicita periodicita;

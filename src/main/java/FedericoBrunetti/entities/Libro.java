@@ -4,8 +4,10 @@ import FedericoBrunetti.enums.Genere;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "libro")
 public class Libro extends Articolo {
  private String autore;
 
