@@ -2,7 +2,7 @@ package FedericoBrunetti.entities;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name ="prestito")
@@ -11,13 +11,13 @@ public class Prestito {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "data_inizio", nullable = false)
-    private Date dataInizio;
+    private LocalDate dataInizio;
 
     @Column(name = "data_rest_prev", nullable = false)
-    private Date dataRestPrev;
+    private LocalDate dataRestPrev;
 
     @Column(name = "data_rest_eff")
-    private Date dataRestEff;
+    private LocalDate dataRestEff;
 
     @ManyToOne
     @JoinColumn (name ="utente", nullable = false)
@@ -30,7 +30,7 @@ public class Prestito {
     public Prestito() {
     }
 
-    public Prestito(int id, Date dataInizio, Date dataRestPrev, Date dataRestEff, Utente utente, Articolo articolo) {
+    public Prestito(int id, LocalDate dataInizio, LocalDate dataRestPrev, LocalDate dataRestEff, Utente utente, Articolo articolo) {
         this.id = id;
         this.dataInizio = dataInizio;
         this.dataRestPrev = dataRestPrev;
@@ -59,27 +59,27 @@ public class Prestito {
         this.id = id;
     }
 
-    public Date getDataInizio() {
+    public LocalDate getDataInizio() {
         return dataInizio;
     }
 
-    public void setDataInizio(Date dataInizio) {
+    public void setDataInizio(LocalDate dataInizio) {
         this.dataInizio = dataInizio;
     }
 
-    public Date getDataRestPrev() {
+    public LocalDate getDataRestPrev() {
         return dataRestPrev;
     }
 
-    public void setDataRestPrev(Date dataRestPrev) {
+    public void setDataRestPrev(LocalDate dataRestPrev) {
         this.dataRestPrev = dataRestPrev;
     }
 
-    public Date getDataRestEff() {
+    public LocalDate getDataRestEff() {
         return dataRestEff;
     }
 
-    public void setDataRestEff(Date dataRestEff) {
+    public void setDataRestEff(LocalDate dataRestEff) {
         this.dataRestEff = dataRestEff;
     }
 

@@ -2,6 +2,7 @@ package FedericoBrunetti.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -15,12 +16,12 @@ public class Utente {
     private String cognome;
     @Temporal(TemporalType.DATE)
     @Column(name = "data_nascita")
-    private Date dataNascita;
+    private LocalDate dataNascita;
 
     public Utente() {
     }
 
-    public Utente(int numTessera, String nome, String cognome, Date dataNascita) {
+    public Utente(int numTessera, String nome, String cognome, LocalDate dataNascita) {
         this.numTessera = numTessera;
         this.nome = nome;
         this.cognome = cognome;
@@ -61,11 +62,11 @@ public class Utente {
         this.cognome = cognome;
     }
 
-    public Date getDataNascita() {
+    public LocalDate getDataNascita() {
         return dataNascita;
     }
 
-    public void setDataNascita(Date dataNascita) {
+    public void setDataNascita(LocalDate dataNascita) {
         this.dataNascita = dataNascita;
     }
 }
