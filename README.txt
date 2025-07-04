@@ -1,0 +1,2 @@
+Articolo è la classe astratta padre di Rivista e di Libro, che si traduce in una tabella joined, affinché si possano fare query polimorfiche senza problemi e gestire facilmente i prestiti.
+Tra Utente ed Articolo si instaura una relazione N:N, tradotta dalla tabella Prestito
